@@ -9,12 +9,33 @@ commands.
 
 #### Nix
 
+Run the flake directly:
+
 `nix run github:koenw/dnsip`
 
+Or install using an overlay:
 
-#### Static binaries
+```nix
+inputs.dnsip.url "github:koenw/dnsip";
 
-The most straightforward way to get started is to download the latest static binaries from the [releases](https://github.com/koenw/dnsip/releases) page.
+# [...]
+
+{ config, pkgs, lib, ... }:
+let
+    pkgs = import nixpkgs rec { inherit system; overlays = [ dnsip.overlays.${system}.default ]; }
+in {
+	# [...]
+
+	environment.systemPackages = [ pkgs.dnsip ];
+}
+```
+
+
+#### Static (linux) binaries
+
+The most straightforward way to get started might be to download the latest
+static binaries from the [releases](https://github.com/koenw/dnsip/releases)
+page.
 
 
 #### docker

@@ -13,6 +13,7 @@
       let
         pkgs = import nixpkgs {
           inherit system;
+          overlays = [ self.overlays.${system}.default ];
         };
 
         # Toolchain for use in development shell
@@ -86,6 +87,10 @@
           # For `nix run` or `nix run .`
           default = native;
           docker = dockerImage;
+        };
+
+        overlays.default = final: prev: {
+          dnsip = nativePackage;
         };
 
         devShells.default = pkgs.mkShell {
