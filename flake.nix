@@ -22,6 +22,7 @@
           complete.cargo
           complete.clippy
           complete.rustfmt
+          complete.rust-analyzer
           targets.x86_64-unknown-linux-musl.latest.rust-std
         ];
 
