@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-anyhow = "1.0.93"
+anyhow = "1.0.94"
 hickory-resolver = { version = "0.24.1", features = ["tokio"] }
 parse_duration = "2.1.1"
 structopt = { version = "0.3.26", features = ["color", "wrap_help"] }
